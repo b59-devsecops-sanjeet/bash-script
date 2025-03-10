@@ -12,3 +12,5 @@ echo -e hai"\n AAAAA \n\t BBBBBB\n\tCCCCC"
 a=10
 
 echo value of a = $a
+
+TODAYS_DATE=$(date +%F)
