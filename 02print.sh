@@ -14,3 +14,5 @@ a=10
 echo value of a = $a
 
 TODAYS_DATE=$(date +%F)
+
+echo "Today's date is $TODAYS_DATE"
