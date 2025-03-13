@@ -18,7 +18,7 @@ else
   echo -e "\e[32m Failed \e[0m"
 fi
 echo -e "Downloading Frontend Content"
-curl -o /tmp/frontend.zip https://expense-web-app.s3.amazonaws.com/frontend.zip
+curl -o /tmp/frontend.zip https://expense-web-app.s3.amazonaws.com/frontend.zip &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then
   echo -e "\e[32m Success \e[0m"
 else
