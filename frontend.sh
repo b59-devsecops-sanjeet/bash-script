@@ -3,7 +3,7 @@
 component=frontend
 logfile=/tmp/frontend.log
 #Common function to print the status of the script
-if[ ${id -u} -ne 0]; then
+if[ $(id -u) -ne 0]; then
   echo -e "\e[31m You should be root user to perform this script\e[0m"
   echo -e "\e[31m Execute the script as root user \e[0m"
   exit 2
