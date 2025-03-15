@@ -9,6 +9,7 @@ else
   echo -e "Failed"
   exit 1
 fi
+
 echo -n "Installing Nginx:"
 dnf install nginx -y &>> $logfile
 
