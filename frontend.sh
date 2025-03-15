@@ -14,6 +14,7 @@ fi
 
 echo -n "Installing Nginx:"
 dnf install nginx -y &>> $logfile
+stat $?
 
 echo -n "Starting Nginx:"
 systemctl enable nginx &>> $logfile
