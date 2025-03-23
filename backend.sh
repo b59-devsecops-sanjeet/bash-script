@@ -26,6 +26,14 @@ dnf install nodejs -y           &>> $logFile
 stat $? 
 
 echo -n "Creating Application User - $appUser :"
-mkdir /app
-useradd $appUser &>> $logFile
-stat $? 
+echo -n "Creating Application User - $appUser :"
+
+id $appUser &>> $logFile
+if [ $? -eq 0 ]; then 
+    echo -e "\e[33m User $appUser is already there, So not creating \e[0m :"
+    echo -e "\t\t SKIPPING"
+else
+    useradd $appUser &>> $logFile
+    mkdir /app &>> $logFile
+    stat $? 
+fi
