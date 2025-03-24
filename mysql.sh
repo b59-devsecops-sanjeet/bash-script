@@ -33,8 +33,12 @@ systemctl enable mysqld &>> $logfile
 systemctl start mysqld &>> $logfile
 stat $?
 
-echo -n "Configuring $component root password:"
-mysql_secure_installation --set-root-pass $1 &>> $logfile
+echo -n "Configuring $component root password: "
+# Set root password via SQL
+mysql --connect-expired-password <<EOF &>> $logfile
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${$1}';
+FLUSH PRIVILEGES;
+EOF
 stat $? 
 
 echo -n "*****  $component Execution Completed  *****"
