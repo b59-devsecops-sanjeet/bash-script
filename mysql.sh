@@ -34,11 +34,10 @@ systemctl start mysqld &>> $logfile
 stat $?
 
 echo -n "Configuring $component root password: "
-# Set root password via SQL
 mysql --connect-expired-password <<EOF &>> $logfile
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${$1}';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$1';
 FLUSH PRIVILEGES;
 EOF
-stat $? 
+stat $?
 
 echo -n "*****  $component Execution Completed  *****"
